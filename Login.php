@@ -14,7 +14,7 @@ if (mysqli_connect_errno())
 $error = FALSE;
 $connectionOK = FALSE;
 
-//if(isset($_POST["connection"])){
+if(isset($_POST["connection"])){
   echo "1";
 
 
@@ -65,7 +65,7 @@ $connectionOK = FALSE;
       $errorMSG = "Couple Identifiant/Mot de passe invalide";
 
     }
-  //}
+  }
 
   ?>
 
