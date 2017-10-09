@@ -31,7 +31,7 @@ if(isset($_POST["register"])){
       $sql = mysqli_query($success, "SELECT login FROM users WHERE login = '".$_POST["login"]."' ");
       $row = mysqli_num_rows($sql);
       
-      if($sql == TRUE){
+      if($sql == FALSE){
        
         if(strlen($_POST["pass"] < 60)){
           
