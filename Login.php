@@ -9,7 +9,7 @@ $connectionOK = FALSE;
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-if (isset($_POST["register"])){
+if (isset($_POST["submit"])){
 
   if ($conn->connect_error) {
     $error = TRUE;

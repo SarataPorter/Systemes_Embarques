@@ -1,6 +1,13 @@
 <?php
 
-$success = mysqli_connect("localhost","root","","Database");
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "Database";
+$error = FALSE;
+$registerOK = FALSE;
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 if (mysqli_connect_errno())
 {
@@ -10,14 +17,10 @@ if (mysqli_connect_errno())
 ?>
 
 <?php
+if(isset($_POST["submit"])){
 
-$error = FALSE;
-$registerOK = FALSE;
-
-if(isset($_POST["register"])){
-  
   if($_POST["login"] == NULL OR $_POST["pass"] == NULL OR $_POST["pass2"] == NULL){
-    
+
     $error = TRUE;
     
     $errorMSG = "Tout les champs doivent être remplis !";
@@ -25,24 +28,37 @@ if(isset($_POST["register"])){
   }
   
   elseif($_POST["pass"] == $_POST["pass2"]){
-    
+
     if($_POST["login"] != $_POST["pass"]){
+
+      $newUsername = mysqli_real_escape_string($conn, $_POST['login']); 
+      $newPassword = mysqli_real_escape_string($conn, $_POST['pass']); 
+      $newPassword2 = mysqli_real_escape_string($conn, $_POST['pass2']); 
+
+      $result = $conn->query("SELECT * FROM users WHERE login ='$newUsername' AND pass='$newPassword'");
+
       
-      $sql = mysqli_query($success, "SELECT login FROM users WHERE login = '".$_POST["login"]."' ");
-      $row = mysqli_num_rows($sql);
-      
-      if($sql == FALSE){
-       
+      if(mysqli_num_rows($result)){
+         $error = TRUE;
+  
+  $errorMSG = "Le nom de compte <strong>".$_POST["login"]."</strong> est déjà utilisé !";
+  
+  $login = NULL;}
+  
+  
+  else{
+    $pass = $_POST["pass"];
+
         if(strlen($_POST["pass"] < 60)){
-          
+
          if(strlen($_POST["login"] < 60)){
-           
+
           if($_POST["login"] != $_POST["pass"]){
-           
-           $sql = mysqli_query($success, "INSERT INTO users (login,pass) VALUES ('".$_POST["login"]."','".$_POST["pass"]."')");
+
+           $sql = mysqli_query($conn, "INSERT INTO users (login,pass) VALUES ('".$_POST["login"]."','".$_POST["pass"]."')");
            
            if($sql){
-             
+
             $registerOK = TRUE;
             $registerMSG = "Inscription réussie ! Vous êtes maintenant membre du site.";
             
@@ -52,7 +68,7 @@ if(isset($_POST["register"])){
           }
 
           else{
-           
+
             $error = TRUE;
             
             $errorMSG = "Erreur dans la requête SQL<br/>".$sql."<br/>";
@@ -62,7 +78,7 @@ if(isset($_POST["register"])){
         }
 
         else{
-          
+
          $error = TRUE;
          
          $errorMSG = "Votre nom compte ne doit pas dépasser <strong>60 caractères</strong> !";
@@ -78,7 +94,7 @@ if(isset($_POST["register"])){
    }
 
    else{
-    
+
      $error = TRUE;
      
      $errorMSG = "Votre mot de passe ne doit pas dépasser <strong>60 caractères</strong> !";
@@ -91,21 +107,10 @@ if(isset($_POST["register"])){
    
  }
 
- else{
-   
-  $error = TRUE;
-  
-  $errorMSG = "Le nom de compte <strong>".$_POST["login"]."</strong> est déjà utilisé !";
-  
-  $login = NULL;
-  
-  $pass = $_POST["pass"];
-  
-}
 }
 
 else{
-  
+
   $error = TRUE;
   
   $errorMSG = "Le nom de compte et le mot de passe doivent êtres différents !";
@@ -115,7 +120,7 @@ else{
 }
 
 elseif($_POST["pass"] != $_POST["pass2"]){
-  
+
  $error = TRUE;
  
  $errorMSG = "Les deux mots de passes sont différents !";
@@ -127,15 +132,13 @@ elseif($_POST["pass"] != $_POST["pass2"]){
 }
 
 elseif($_POST["login"] == $_POST["pass"]){
-  
+
  $error = TRUE;
  
  $errorMSG = "Le nom de compte et le mot de passe doivent être différents !";
  
 }
-
 }
-
 ?>
 
 <?php
