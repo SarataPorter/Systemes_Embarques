@@ -52,55 +52,46 @@
 
 </head>
 
-<script>/*
+<script>
   $(document).ready(
     function(){
       $("#login").click(function () {
-      	$("#Signin").css({'display':'none'});
+        $("#Signin").css({'display':'none'});
         $("#Login").css({'display':'block'});
-        window.location.hash='#mastfoot';
-      });
-    });*/
-
-    $(document).ready(
-      function(){
-        $("#login").click(function () {
-          $("#Signin").css({'display':'none'});
-          $("#Login").css({'display':'block'});
-          var hash = '#mastfoot';
-          $('html, body').animate({
-            scrollTop: $('#mastfoot').offset().top
-          }, 1200, function(){
-            window.location.hash = '#mastfoot';
-          });
-        });
-      });
-
-    $(document).ready(
-      function(){
-        $("#signin").click(function () {
-         $("#Login").css({'display':'none'});
-         $("#Signin").css({'display':'block'});
-         var hash = '#mastfoot';
-         $('html, body').animate({
+        var hash = '#mastfoot';
+        $('html, body').animate({
           scrollTop: $('#mastfoot').offset().top
         }, 1200, function(){
           window.location.hash = '#mastfoot';
         });
-       });
       });
+    });
 
-    </script>
+  $(document).ready(
+    function(){
+      $("#signin").click(function () {
+       $("#Login").css({'display':'none'});
+       $("#Signin").css({'display':'block'});
+       var hash = '#mastfoot';
+       $('html, body').animate({
+        scrollTop: $('#mastfoot').offset().top
+      }, 1200, function(){
+        window.location.hash = '#mastfoot';
+      });
+     });
+    });
 
-    <div class="header">
-      <ul>
-        <li class="sizeLogo"><img src='img/logo1.png'  alt='logo' id='logo'/></li>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="partials/mapage.html">Ma page</a></li>
-        <li style="float:right"><button id="login" style="margin-top: -5px">Connexion</button></li>
-        <li style="float:right"><button onclick="window.location.hash='#submit';" id="signin" style="margin-top: -5px">Inscription</button></li>
-      </ul>
-    </div>
+  </script>
+
+  <div class="header">
+    <ul>
+      <li class="sizeLogo"><img src='img/logo1.png'  alt='logo' id='logo'/></li>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="partials/mapage.html">Ma page</a></li>
+      <li style="float:right"><button id="login" style="margin-top: -5px">Connexion</button></li>
+      <li style="float:right"><button onclick="window.location.hash='#submit';" id="signin" style="margin-top: -5px">Inscription</button></li>
+    </ul>
+  </div>
 
   <!-- Appel du header
 
