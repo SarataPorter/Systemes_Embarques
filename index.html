@@ -52,31 +52,55 @@
 
 </head>
 
-<script>
+<script>/*
   $(document).ready(
     function(){
       $("#login").click(function () {
+      	$("#Signin").css({'display':'none'});
         $("#Login").css({'display':'block'});
+        window.location.hash='#mastfoot';
       });
-    });
-  $(document).ready(
-    function(){
-      $("#signin").click(function () {
-        $("#Signin").css({'display':'block'});
+    });*/
+
+    $(document).ready(
+      function(){
+        $("#login").click(function () {
+          $("#Signin").css({'display':'none'});
+          $("#Login").css({'display':'block'});
+          var hash = '#mastfoot';
+          $('html, body').animate({
+            scrollTop: $('#mastfoot').offset().top
+          }, 1200, function(){
+            window.location.hash = '#mastfoot';
+          });
+        });
       });
-    });
 
-  </script>
+    $(document).ready(
+      function(){
+        $("#signin").click(function () {
+         $("#Login").css({'display':'none'});
+         $("#Signin").css({'display':'block'});
+         var hash = '#mastfoot';
+         $('html, body').animate({
+          scrollTop: $('#mastfoot').offset().top
+        }, 1200, function(){
+          window.location.hash = '#mastfoot';
+        });
+       });
+      });
 
-  <div class="header">
-    <ul>
-      <li class="sizeLogo"><img src='img/logo1.png'  alt='logo' id='logo'/></li>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="partials/mapage.html">Ma page</a></li>
-      <li style="float:right"><button id="login" style="margin-top: -5px">Connexion</button></li>
-      <li style="float:right"><button id="signin" style="margin-top: -5px">Inscription</button></li>
-    </ul>
-  </div>
+    </script>
+
+    <div class="header">
+      <ul>
+        <li class="sizeLogo"><img src='img/logo1.png'  alt='logo' id='logo'/></li>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="partials/mapage.html">Ma page</a></li>
+        <li style="float:right"><button id="login" style="margin-top: -5px">Connexion</button></li>
+        <li style="float:right"><button onclick="window.location.hash='#submit';" id="signin" style="margin-top: -5px">Inscription</button></li>
+      </ul>
+    </div>
 
   <!-- Appel du header
 
@@ -145,7 +169,7 @@
 
       </table>
 
-      <input type="submit" name="submit" value="Se connecter" style="color: black"/><br/><br/>
+      <input id="submit" type="submit" name="submit" value="Se connecter" style="color: black"/><br/><br/>
 
     </form>
 
@@ -154,7 +178,7 @@
   <div id="Signin" class="form" style="display:none;">
 
     <form action="SignIn.php" method="POST" style="border: none !important;" >
-    </br> Se connecter :  </br>  
+    </br> Inscription :  </br>  
     <table>
 
       <tr>                        
@@ -172,7 +196,7 @@
 
     </table>
 
-    <input type="submit" name="submit" value="Se connecter" style="color: black"/><br/><br/>
+    <input id="submit" type="submit" name="submit" value="Se connecter" style="color: black"/><br/><br/>
 
   </form>
 
@@ -181,7 +205,7 @@
 
 <!-- Appel du footer -->
 
-<div class="mastfoot">          
+<div id ="mastfoot" class="mastfoot">          
   <p> </br> Créé et developpé par ©EPF - E-Santé - Promotion 2018 </br> </p>    
 </div>
 
