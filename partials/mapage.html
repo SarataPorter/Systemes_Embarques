@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html ng-app="" lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Syst Embarqués</title>
+
+  <link rel="shortcut icon" href="..\img\logo.ico">
+
+  <!-- Fichiers css -->
+  <link rel="stylesheet" href="..\vendor\bootstrap\css\bootstrap.css"/>
+  <link rel="stylesheet" href="..\css\mapage.css">
+  <link rel="stylesheet" href="..\css\login.css">
+  <link rel="stylesheet" href="..\font-awesome-4.7.0\css\font-awesome.min.css">  
+  <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+
+
+  <!-- Fichiers js -->
+  <script type="text/javascript" src="..\vendor\angular\angular.js"></script>
+  <script type="text/javascript" src="..\vendor\angular\angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Fait descendre le header lors du scroll de la page -->
+  <script>
+    (function($){
+      $(document).ready(function(){
+        var offset = $(".header").offset().top;
+        $(document).scroll(function(){
+          var scrollTop = $(document).scrollTop();
+          if(scrollTop > offset){
+            $(".header").css("position", "fixed");
+          }
+          else {
+            $(".header").css("position", "static");
+          }
+        });
+      });
+    })(jQuery);
+
+
+  </script>
+
+
+  <!-- Fin header mobile lors du scroll de la page -->
+
+</head>
+
+<script>
+  $(document).ready(
+    function(){
+      $("#login").click(function () {
+        $("#Login").css({'display':'block'});
+      });
+    });
+    </script>
+    <script>
+  $(document).ready(
+    function(){
+      $("#signin").click(function () {
+        $("#Signin").css({'display':'block'});
+      });
+    });
+
+  </script>
+
+  <!-- Header -->
+
+    <div class="header">
+    <ul>
+      <li class="sizeLogo"><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="mapage.html">Ma page</a></li>
+    </ul>
+  </div>
+  <div ng-include src="'partials/head.html'"></div>
+
+ <!-- Fin header -->
+
+
+<body>
+
+<div class="row">
+<div class="container_col">
+  <div class="col-sm-3">
+      <a href="../index.html">Patient</a></br></br></br>
+      <a href="../index.html">Paramètres</a>
+  </div>
+</div>
+
+  <div class="col-sm-8">Bonjour</div>
+
+
+</div>
+
+  </body>
+
+</html>
