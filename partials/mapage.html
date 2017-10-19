@@ -25,6 +25,8 @@
   <script type="text/javascript" src="..\vendor\angular\angular-route.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css"></script>
 
   <!-- Fait descendre le header lors du scroll de la page -->
   <script>
@@ -85,18 +87,38 @@
 
 <body>
 
-<div class="row">
-<div class="container_col">
-  <div class="col-sm-3">
+
+  <div class="row">
+    <div class="col-xs-6 col-md-2" style="background-color:black;">
       <a href="../index.html">Patient</a></br></br></br>
       <a href="../index.html">Paramètres</a>
+    </div>
+    <div class="col-xs-6 col-md-10" style="background-color:lavenderblush;">
+      Bonjour
+
+      <div id="visualization"></div>
+      <script type="text/javascript">
+        var container = document.getElementById('visualization');
+      var items = [
+        {x: '2014-06-11', y: 10},
+        {x: '2014-06-12', y: 25},
+        {x: '2014-06-13', y: 30},
+        {x: '2014-06-14', y: 10},
+        {x: '2014-06-15', y: 15},
+        {x: '2014-06-16', y: 30}
+      ];
+
+      var dataset = new vis.DataSet(items);
+      var options = {
+        start: '2014-06-10',
+        end: '2014-06-18'
+      };
+      var graph2d = new vis.Graph2d(container, dataset, options);
+      </script>
+  
+    </div>
+
   </div>
-</div>
-
-  <div class="col-sm-8">Bonjour</div>
-
-
-</div>
 
   </body>
 
