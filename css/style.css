@@ -84,7 +84,7 @@ body{
 	padding: 0px;
 	text-align: center;
 	align-content: center;
-	background-color: #81ABB9;
+	 background: linear-gradient(to bottom right,#74DC91, #5FD99C, #38E2B3, #31E6DD );
 	font-size: 16px;
 	color: white;
 	text-shadow: 0px 1px 3px grey;
