@@ -108,7 +108,7 @@
       <h1> Tableau de Bord : </h1>
 
 <div class="w3-row">
-  <div class="w3-col s4 w3-center" style="width: 33%"><p>Tension moyenne par jour :</p>
+  <div class="w3-col s4 w3-left" style="width: 33%"><p>Tension moyenne par jour :</p>
     <div class="tab1">
         <div id="visualization"></div>
         <script type="text/javascript">
@@ -133,7 +133,7 @@
     </div> 
   </div>
 
-<div class="w3-col s4  w3-center" style="width: 33%"><p>Fréquence cardiaque moyenne par jour :</p>
+<div class="w3-col s4  w3-left" style="width: 33%"><p>Fréquence cardiaque moyenne par jour :</p>
 
     <div class="tab1">
         <div id="visualization1"></div>
@@ -159,7 +159,7 @@
     </div> 
 
 </div>
-<div class="w3-col s4 w3-center" style="width: 33%"><p>Température moyenne par jour :</p>
+<div class="w3-col s4 w3-left" style="width: 33%"><p>Température moyenne par jour :</p>
 
     <div class="tab1">
         <div id="visualization2"></div>
@@ -189,30 +189,32 @@
     </div> 
 </div>
 
-<br><br><br>
-
 </div>
+<div  class="w3-col s4 " style="width: 100%; margin-top: 50px">
 
-<div class="table-responsive">
-  <table class="table table-bordered">
-    <thead class="thead-inverse">
-      <tr>
-        <th>idData: </th>
-        <th>Date :</th>
-        <th>Heure :</th>
-        <th>Air :</th>
-        <th>Température :</th>
-        <th>Posture :</th>
-        <th>BPM :</th>
-        <th>Oxygene :</th>
-      </tr>
-    </thead>
-    <tbody id="myTable">
-      <?php
-          require "../php/requetetab3.php"
-      ?>
-    </tbody>
-  </table> 
+  Tableau des données Capteurs du patient : <br><br>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="thead-inverse">
+        <tr>
+          <th>idData: </th>
+          <th>Date :</th>
+          <th>Heure :</th>
+          <th>Air :</th>
+          <th>Température :</th>
+          <th>Posture :</th>
+          <th>BPM :</th>
+          <th>Oxygene :</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+        <?php
+            require "../php/requetetab3.php"
+        ?>
+      </tbody>
+    </table> 
+  </div>
 </div>
            
 
