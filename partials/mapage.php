@@ -77,8 +77,8 @@
     <div class="header">
     <ul>
       <li class="sizeLogo"><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
-      <li><a href="../index.html">Accueil</a></li>
-      <li><a href="mapage.html">Ma page</a></li>
+      <li><a href="../index.php">Accueil</a></li>
+      <li><a href="mapage.php">Ma page</a></li>
     </ul>
   </div>
  <!-- Fin header -->
@@ -163,29 +163,7 @@
 
     <div class="tab1">
         <div id="visualization2"></div>
-        <script type="text/javascript">
-          var container = document.getElementById('visualization2');
-        var items = [
-          {x: '2014-06-11', y: 10},
-          {x: '2014-06-12', y: 25},
-          {x: '2014-06-13', y: 27},
-          {x: '2014-06-14', y: 10},
-          {x: '2014-06-15', y: 15},
-          {x: '2014-06-16', y: 30}
-        ];
-
-        var options = {
-          style:'bar',
-          barChart: {width:50, align:'center'}, // align: left, center, right
-          drawPoints: false,
-          dataAxis: {
-              icons:true
-          },
-          orientation:'top',
-          height: '200px'
-        };
-        var graph2d1 = new vis.Graph2d(container, items, options);
-        </script>
+        <script src="../js/tab1.js"></script>
     </div> 
 </div>
 

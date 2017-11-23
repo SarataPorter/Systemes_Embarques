@@ -1,5 +1,6 @@
 <?php
 
+
 $username = "root";
 $password = "";
 $hostname = "localhost";
@@ -7,7 +8,7 @@ $mainDB = "test";
 
 
 // Connection to mysql Server
-$con = mysqli_connect($hostname, $username, $password, $mainDB)
+$conn = mysqli_connect($hostname, $username, $password, $mainDB)
 or die("Unable to connect to MySQL");
 
 // Check connection
@@ -17,7 +18,7 @@ if (mysqli_connect_errno())
 }
 
 // Set autocommit to off
-mysqli_autocommit($con,FALSE);
+mysqli_autocommit($conn,FALSE);
 
 
 
