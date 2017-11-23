@@ -110,60 +110,25 @@
 <div class="w3-row">
   <div class="w3-col s4 w3-left" style="width: 33%"><p>Tension moyenne par jour :</p>
     <div class="tab1">
-        <div id="visualization"></div>
-        <script type="text/javascript">
-          var container = document.getElementById('visualization');
-        var items = [
-          {x: '2014-06-11', y: 10},
-          {x: '2014-06-12', y: 25},
-          {x: '2014-06-13', y: 30},
-          {x: '2014-06-14', y: 10},
-          {x: '2014-06-15', y: 15},
-          {x: '2014-06-16', y: 30}
-        ];
-
-        var dataset = new vis.DataSet(items);
-        var options = {
-          start: '2014-06-10',
-          end: '2014-06-18',
-          height: '200px'
-        };
-        var graph2d = new vis.Graph2d(container, dataset, options);
-        </script>
+        <div id="visualization1"></div>
+        <script src="../js/tab1.js"></script>
     </div> 
   </div>
 
-<div class="w3-col s4  w3-left" style="width: 33%"><p>Fréquence cardiaque moyenne par jour :</p>
-
-    <div class="tab1">
-        <div id="visualization1"></div>
-        <script type="text/javascript">
-          var container = document.getElementById('visualization1');
-        var items = [
-          {x: '2014-06-11', y: 10},
-          {x: '2014-06-12', y: 25},
-          {x: '2014-06-13', y: 27},
-          {x: '2014-06-14', y: 10},
-          {x: '2014-06-15', y: 15},
-          {x: '2014-06-16', y: 30}
-        ];
-
-        var dataset = new vis.DataSet(items);
-        var options = {
-          start: '2014-06-10',
-          end: '2014-06-18',
-          height: '200px'
-        };
-        var graph2d1 = new vis.Graph2d(container, dataset, options);
-        </script>
-    </div> 
-
-</div>
-<div class="w3-col s4 w3-left" style="width: 33%"><p>Température moyenne par jour :</p>
+<div class="w3-col s4  w3-left" style="width: 33%"><p>Fréquence cardiaque détaillée par jour :</p>
 
     <div class="tab1">
         <div id="visualization2"></div>
-        <script src="../js/tab1.js"></script>
+        <script src="../js/tab2.js"></script>
+
+    </div> 
+
+</div>
+<div class="w3-col s4 w3-left" style="width: 33%"><p>Température détaillé par jour :</p>
+
+    <div class="tab1">
+        <div id="visualization3"></div>
+        <script src="../js/tab3.js"></script>
     </div> 
 </div>
 

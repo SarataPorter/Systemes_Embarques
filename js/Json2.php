@@ -14,12 +14,13 @@
 	while ($stmt2->fetch()) {
 		$items[] = array(
 	      "x" => $date1." ".$time1, 
-	      "y"=> $temperature,	      
+	      "y"=> $bpm,	      
 		 );
 	}
 	$result = array(
 		"items" => $items
 	);
 	echo json_encode($result);
+
 
 ?>
