@@ -75,8 +75,8 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
 <div class="header">
   <ul>
     <li class="sizeLogo"><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
-    <li><a href="../index.html">Accueil</a></li>
-    <li><a href="../partials/mapage.html">Ma page</a></li>
+    <li><a href="../index.php">Accueil</a></li>
+    <li><a href="../partials/mapage.php">Ma page</a></li>
     <li style="float:right"><button id="login" style="margin-top: -5px">Déonnexion</button></li>
   </ul>
 </div>
