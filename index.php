@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="vendor\bootstrap\css\bootstrap.css"/>
   <link rel="stylesheet" href="css\style.css">
   <link rel="stylesheet" href="css\head.css">
-    <link rel="stylesheet" href="css\login.css">
+  <link rel="stylesheet" href="css\login.css">
   <link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">  
   <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 
@@ -84,20 +84,18 @@
   </script>
 
 
-<!--
+
   <?php 
-    /*
     session_start();
-    if (isset($_SESSION['idUser']) && isset($_SESSION['user_lastname']) && isset($_SESSION['user_firstname'])){
+    if (isset($_SESSION['account_name'])){
            echo"<div class='header'>
      <ul>
      <li class='sizeLogo'><img src='img/logo1.png'  alt='logo' id='logo'/></li>
-     <li><a href='index.php'>Accueil</a></li>
-     <li><a href='partials/mapage.php'>Ma page</a></li>
-     <li style='float:right'><button id='login' style='margin-top: -5px'>Déconnexion</button></li>
+     <li><a href='../index.php'>Accueil</a></li>
+     <li style='float:right'><input type=\"button\" id=\"logout\" style='margin-top: -5px' value=\"Déconnexion\" OnClick=\"window.location.href='php/deconnexion.php'\"/>
+</li>
      </ul>
-     </div>
-     </head>"   
+     </div>"  
    ;}
    else {
      echo"<div class='header'>
@@ -107,15 +105,14 @@
      <li style='float:right'><button id='login' style='margin-top: -5px'>Connexion</button></li>
      <li style='float:right'><button id='signin' style='margin-top: -5px'>Inscription</button></li>
      </ul>
-     </div>
-     </head>" 
+     </div>" 
    ;}
-   */
   ?>
-  -->
 
+<!--
   <div class="header">
     <ul>
+
       <li class="sizeLogo"><img src='img/logo1.png'  alt='logo' id='logo'/></li>
       <li><a href="index.html">Accueil</a></li>
       <li><a href="partials/mapage.php">Ma page</a></li>
@@ -123,12 +120,13 @@
       <li style="float:right"><button onclick="window.location.hash='#submit';" id="signin" style="margin-top: -5px">Inscription</button></li>
     </ul>
   </div>
+    -->
 
-  <!-- Appel du header
+  <!-- Appel du header -->
 
   <div ng-include src="'partials/head.html'"></div>
 
-  Fin header -->
+  <!-- Fin header -->
 
   <body>
 

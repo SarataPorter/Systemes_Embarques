@@ -1,3 +1,8 @@
+
+<?php
+session_start(); 
+?>
+
 <!DOCTYPE html>
 <html ng-app="" lang="fr">
 
@@ -70,15 +75,15 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
 
 </script>
 
-<div class="header">
-  <ul>
-    <li class="sizeLogo"><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
-    <li><a href="../index.php">Accueil</a></li>
-    <li><a href="../partials/mapage.php">Ma page</a></li>
-    <li style="float:right"><button id="login" style="margin-top: 0px">Déconnexion</button></li>
-  </ul>
-</div>
-
+<div class='header'>
+     <ul>
+     <li class='sizeLogo'><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
+     <li><a href='../index.php'>Accueil</a></li>
+     <li style='float:right'><input type="button" id="logout" style='margin-top: -5px' value="Déconnexion" OnClick="window.location.href='../php/deconnexion.php'" />
+</li>
+     </ul>
+     </div>
+     </head>
 </head>
 
 <body>
@@ -87,7 +92,7 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
   $username = "root";
   $password = "";
   $hostname = "localhost";
-  $mainDB = "test"; 
+  $mainDB = "Database"; 
   $error = FALSE;
   $connectionOK = FALSE;
 
@@ -111,8 +116,7 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
     if (mysqli_num_rows($result)) {
       $connectionOK = TRUE;
       $connectionMSG = "Connexion réussie !";
-      session_start();
-      $_SESSION["account_name"] = $_POST["login"];    
+      $_SESSION["account_name"] = $_POST["login"];
     } 
     else
     {  
@@ -151,13 +155,14 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
     <div class='row text-center'>
     <div class='col-sm-3 hidden-xs'></div>
     <div class='col-sm-2 hidden-xs'></div>
-    <div class='col-sm-2 hidden-xs'><button style='margin-top:80px; font-size:26px;' id='mapage'>Ma Page</button></div>
+    <div class='col-sm-2 hidden-xs'><button style='margin-top:80px; font-size:26px;' id='mapage' onclick=\"window.location.href='../partials/mapage.php'\">Ma Page</button></div>
     <div class='col-sm-2 hidden-xs'></div>
     <div class='col-sm-3 hidden-xs'></div>
     </div>
     </div>";
   }
   ?>
+
   <div id ="mastfoot" class="mastfoot">          
     <p> </br> Créé et developpé par ©EPF - E-Santé - Promotion 2018 </br> </p>    
   </div>
