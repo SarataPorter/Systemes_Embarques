@@ -15,7 +15,7 @@
   <!-- Fichiers css -->
   <link rel="stylesheet" href="vendor\bootstrap\css\bootstrap.css"/>
   <link rel="stylesheet" href="css\style.css">
-  <link rel="stylesheet" href="css\head.css">
+  <link href="css/head.css" rel="stylesheet">
   <link rel="stylesheet" href="css\login.css">
   <link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">  
   <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
@@ -83,38 +83,8 @@
 
   </script>
 
-
-
-  <?php 
-    session_start();
-    if (isset($_SESSION['account_name'])){
-           echo"<div class='header'>
-     <ul>
-     <li class='sizeLogo'><img src='img/logo1.png'  alt='logo' id='logo'/></li>
-     <li><a href='index.php'>Accueil</a></li>
-     <li><a href='partials/mapage.php'>Ma Page</a></li>
-     <li><a>".$_SESSION["idUser"]."</a></li>
-     <li style='float:right'><input type=\"button\" id=\"logout\" style='margin-top: -5px' value=\"Déconnexion\" OnClick=\"window.location.href='php/deconnexion.php'\"/>
-</li>
-     </ul>
-     </div>"  
-   ;}
-   else {
-     echo"<div class='header'>
-     <ul>
-     <li class='sizeLogo'><img src='img/logo1.png'  alt='logo' id='logo'/></li>
-     <li><a href='index.php'>Accueil</a></li>
-     <li style='float:right'><button id='login' style='margin-top: -5px'>Connexion</button></li>
-     <li style='float:right'><button id='signin' style='margin-top: -5px'>Inscription</button></li>
-     </ul>
-     </div>" 
-   ;}
-  ?>
-
-<!--
   <div class="header">
     <ul>
-
       <li class="sizeLogo"><img src='img/logo1.png'  alt='logo' id='logo'/></li>
       <li><a href="index.html">Accueil</a></li>
       <li><a href="partials/mapage.php">Ma page</a></li>
@@ -122,13 +92,12 @@
       <li style="float:right"><button onclick="window.location.hash='#submit';" id="signin" style="margin-top: -5px">Inscription</button></li>
     </ul>
   </div>
-    -->
 
-  <!-- Appel du header -->
+  <!-- Appel du header
 
   <div ng-include src="'partials/head.html'"></div>
 
-  <!-- Fin header -->
+  Fin header -->
 
   <body>
 
@@ -175,7 +144,7 @@
 
     <div id="Login" class="form" style="display:none;">
 
-      <form action="partials/Login.php" method="POST" style="border: none !important;" >
+      <form action="Login.php" method="POST" style="border: none !important;" >
       </br> Se connecter :  </br>  
       <table>
 
@@ -199,37 +168,30 @@
 
   <div id="Signin" class="form" style="display:none;">
 
-      <form action="partials/SignIn.php" method="POST" style="border: none !important;" >
-      </br> Inscription :  </br>  
-      <table>
+    <form action="SignIn.php" method="POST" style="border: none !important;" >
+    </br> Inscription :  </br>  
+    <table>
 
-        <tr>                        
-          <td><label for="lastname"><strong>Nom :  </strong></label></td>
-          <td><input type="text" name="lastname" id="lastname"/></td>     
-        </tr>
-        <tr>                        
-          <td><label for="firstname"><strong>Prénom :  </strong></label></td>
-          <td><input type="text" name="firstname" id="firstname"/></td>     
-        </tr>
-        <tr>                        
-          <td><label for="login"><strong>Identifiant :  </strong></label></td>
-          <td><input type="text" name="login" id="login"/></td>     
-        </tr>
-        <tr>
-          <td><label for="pass"><strong>Mot de passe :  </strong></label></td>
-          <td><input type="password" name="pass" id="pass"/></td>
-        </tr>
-        <tr>
-          <td><label for="pass2"><strong>Confirmez le mot de passe :</strong></label></td>
-          <td><input type="password" name="pass2" id="pass2"/></td>                        
-        </tr>
-      </table>
+      <tr>                        
+        <td><label for="login"><strong>Identifiant :  </strong></label></td>
+        <td><input type="text" name="login" id="login"/></td>     
+      </tr>
+      <tr>
+        <td><label for="pass"><strong>Mot de passe :  </strong></label></td>
+        <td><input type="password" name="pass" id="pass"/></td>
+      </tr>
+      <tr>
+        <td><label for="pass2"><strong>Confirmez le mot de passe :</strong></label></td>
+        <td><input type="password" name="pass2" id="pass2"/></td>                        
+      </tr>
 
-      <input id="submit" type="submit" name="submit" value="Inscription" style="color: black"/><br/><br/>
+    </table>
 
-    </form>
+    <input id="submit" type="submit" name="submit" value="Se connecter" style="color: black"/><br/><br/>
 
-  </div>  
+  </form>
+
+</div>
 
 
 <!-- Appel du footer -->

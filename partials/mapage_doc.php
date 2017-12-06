@@ -77,7 +77,6 @@
     <div class="header">
     <ul>
       <li class="sizeLogo"><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
-      <li style='float:right'><input type=button id=logout style='margin-top: -5px' value=Déconnexion OnClick=window.location.href="../php/deconnexion.php">
       <li><a href="../index.php">Accueil</a></li>
       <li><a href="mapage.php">Ma page</a></li>
     </ul>
@@ -105,61 +104,74 @@
   </div> 
 
 
-    <div class="contenu">
-      <h1> Tableau de Bord : </h1>
+  <div class="contenu">
 
-<div class="w3-row">
-  <div class="w3-col s4 w3-left" style="width: 33%"><p>Tension moyenne par jour :</p>
-    <div class="tab1">
-        <div id="visualization1"></div>
-        <script src="../js/tab1.js"></script>
-    </div> 
-  </div>
+      
+    <h1> Tableau de Bord : </h1>
 
-<div class="w3-col s4  w3-left" style="width: 33%"><p>Fréquence cardiaque détaillée par jour :</p>
+    
+    <form method='post' action="../php/requetetab3_doc.php" style="margin:0px">
+      Selectionnez un client : 
+      <select id='menu' name='id'>
+      <?php 
+        require "../php/requetetab4.php"
+      ?>
+      </select>
 
-    <div class="tab1">
-        <div id="visualization2"></div>
-        <script src="../js/tab2.js"></script>
+      <div class="btn-group">
+        <button id="submit" type="button" class="">Go</button>
+      </div>
+    </form>
 
-    </div> 
+    <div class="w3-row">
 
-</div>
-<div class="w3-col s4 w3-left" style="width: 33%"><p>Température détaillé par jour :</p>
+      <div class="w3-col s4 w3-left" style="width: 33%"><p> <br/> Tension moyenne par jour :</p>
+        <div class="tab1">
+            <div id="visualization1"></div>
+            <script src="../js/tab1_doc.js"></script>
+        </div> 
+      </div>
 
-    <div class="tab1">
-        <div id="visualization3"></div>
-        <script src="../js/tab3.js"></script>
-    </div> 
-</div>
+      <div class="w3-col s4  w3-left" style="width: 33%"><p> <br/>Fréquence cardiaque détaillée par jour :</p>
+        <div class="tab1">
+          <div id="visualization2"></div>
+          <script src="../js/tab2_doc.js"></script>
+        </div> 
+      </div>
 
-</div>
-<div  class="w3-col s4 " style="width: 100%; margin-top: 50px">
+      <div class="w3-col s4 w3-left" style="width: 33%"><p> <br/>Température détaillé par jour :</p>
+        <div class="tab1">
+          <div id="visualization3"></div>
+          <script src="../js/tab3_doc.js"></script>
+        </div> 
+      </div>
 
-  Tableau des données Capteurs du patient : <br><br>
+    </div>
 
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead class="thead-inverse">
-        <tr>
-          <th>idData: </th>
-          <th>Date :</th>
-          <th>Heure :</th>
-          <th>Air :</th>
-          <th>Température :</th>
-          <th>Posture :</th>
-          <th>BPM :</th>
-          <th>Oxygene :</th>
-        </tr>
-      </thead>
-      <tbody id="myTable">
-        <?php
-            require "../php/requetetab3.php"
-        ?>
-      </tbody>
-    </table> 
-  </div>
-</div>
+    <div  class="w3-col s4 " style="width: 100%; margin-top: 50px">
+
+      Tableau des données Capteurs du patient : <br><br>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead-inverse">
+            <tr>
+              <th>idData: </th>
+              <th>Date :</th>
+              <th>Heure :</th>
+              <th>Air :</th>
+              <th>Température :</th>
+              <th>Posture :</th>
+              <th>BPM :</th>
+              <th>Oxygene :</th>
+            </tr>
+          </thead>
+          <tbody id="myTable">
+            <script src="../js/tab0_doc.js"></script>
+          </tbody>
+        </table> 
+      </div>
+    </div>
            
 
 
