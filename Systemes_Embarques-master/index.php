@@ -91,7 +91,9 @@
            echo"<div class='header'>
      <ul>
      <li class='sizeLogo'><img src='img/logo1.png'  alt='logo' id='logo'/></li>
-     <li><a href='../index.php'>Accueil</a></li>
+     <li><a href='index.php'>Accueil</a></li>
+     <li><a href='partials/mapage.php'>Ma Page</a></li>
+     <li><a>".$_SESSION["idUser"]."</a></li>
      <li style='float:right'><input type=\"button\" id=\"logout\" style='margin-top: -5px' value=\"Déconnexion\" OnClick=\"window.location.href='php/deconnexion.php'\"/>
 </li>
      </ul>

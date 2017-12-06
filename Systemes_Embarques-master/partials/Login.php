@@ -87,17 +87,12 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
 </head>
 
 <body>
+
   <?php
+      require "../php/dbConnect.php"
+  ?>
 
-  $username = "root";
-  $password = "";
-  $hostname = "localhost";
-  $mainDB = "Database"; 
-  $error = FALSE;
-  $connectionOK = FALSE;
-
-  $conn = mysqli_connect($hostname, $username, $password, $mainDB);
-
+  <?php
   if (isset($_POST["submit"])){
 
     if ($conn->connect_error) {
@@ -112,11 +107,18 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
 
     $result = $conn->query("SELECT * FROM users WHERE account_name ='$newUsername' AND password='$newPassword'");
 
+    $request = "SELECT * FROM users WHERE account_name ='$newUsername' AND password='$newPassword'";
+    $stmt2 = $conn->prepare($request) ;
+    $stmt2->execute();
+    $stmt2->bind_result($idUser,$account_name, $user_lastname, $user_firstname, $password, $id_doctor);
+    $_SESSION["idUser"]=$idUser;
+    while ($stmt2->fetch()){};
 
     if (mysqli_num_rows($result)) {
       $connectionOK = TRUE;
       $connectionMSG = "Connexion réussie !";
       $_SESSION["account_name"] = $_POST["login"];
+      $_SESSION["idUser"]=$idUser;
     } 
     else
     {  
@@ -130,7 +132,6 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
     $conn->close();
   }
   ?>
-
   <?php
   if($error == TRUE){
     echo"<div id='monDiv' style='background-color:#719AAC; width:200px; height:300px;'>

@@ -1,43 +1,13 @@
+var container1 = document.getElementById('visualization1');
 
-      var container = document.getElementById('visualization2');
+$.getJSON("../js/Json1.php", function(jsonResponse){
+       console.log(jsonResponse);
 
-       $.getJSON("../js/Json.php", function(jsonResponse){
-       //console.log(jsonResponse);
+       var items = jsonResponse['items'];
 
-          var items = jsonResponse['items']; 
-           var options = {
-              style:'bar',
-              barChart: {width:50, align:'center'}, // align: left, center, right
-              drawPoints: false,
-              dataAxis: {
-                  icons:true
-              },
-              orientation:'top',
-              height: '200px',
-              start: '2017-06-11'
-          };
-          var graph2d2 = new vis.Graph2d(container, items, options);
-       });
-
-console.log(items); 
-
-       /*$.getJSON("../js/Json.php", function(jsonResponse){
-              console.log(jsonResponse);
-              var items = jsonResponse['items'];
-              
-              timeline = new vis.Timeline(
-                document.getElementById('visualization'), 
-                items, 
-                groups, 
-                {
-                  clickToUse: true,
-                  //stack: false,
-                  orientation: 'both'
-                }
-              );              
-            }); */      
-
-       
-
-
-
+       var dataset = new vis.DataSet(items);
+       var options = {
+        height: '200px'
+      };
+      var graph2d0 = new vis.Graph2d(container1, dataset, options);
+    });
