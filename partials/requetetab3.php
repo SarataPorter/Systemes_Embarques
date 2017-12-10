@@ -3,8 +3,8 @@
 	require "dbConnect.php";
 
 	
-	$idUser='4';
-	//$idUser1=$_SESSION["idUser"];
+	//$idUser='4';
+	$idUser=$_SESSION["idUser"];
 
 	$request2 = "SELECT idData, date1, time1, air, temperature, posture, bpm, oxygen_saturation FROM medical_data WHERE idUser='$idUser' AND date1!='0000-00-00' ORDER BY time1 DESC";  
 	$stmt2 = $conn->prepare($request2) ;

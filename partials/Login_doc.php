@@ -105,19 +105,19 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
     $newUsername = mysqli_real_escape_string($conn, $_POST['login']); 
     $newPassword = mysqli_real_escape_string($conn, $_POST['pass']);
 
-    $result = $conn->query("SELECT * FROM users WHERE account_name ='$newUsername' AND password='$newPassword'");
-    $request = "SELECT * FROM users WHERE account_name ='$newUsername' AND password='$newPassword'";
+    $result = $conn->query("SELECT * FROM doctor WHERE account_name ='$newUsername' AND password='$newPassword'");
+    $request = "SELECT * FROM doctor WHERE account_name ='$newUsername' AND password='$newPassword'";
     $stmt2 = $conn->prepare($request) ;
     $stmt2->execute();
-    $stmt2->bind_result($idUser,$account_name, $user_lastname, $user_firstname, $password, $id_doctor);
+    $stmt2->bind_result($id_doctor, $surname, $name, $password ,$account_name);
     while ($stmt2->fetch()){};
 
     if (mysqli_num_rows($result)) {
       $connectionOK = TRUE;
       $connectionMSG = "Connexion réussie !";
       $_SESSION["account_name"] = $_POST["login"];
-      $_SESSION["User"]=$user_lastname;
-      $_SESSION["idUser"]=$idUser;
+      $_SESSION["User"]=$name;
+      $_SESSION["idUser"]=$id_doctor;
 
     } 
     else
@@ -157,7 +157,7 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
     <div class='row text-center'>
     <div class='col-sm-3 hidden-xs'></div>
     <div class='col-sm-2 hidden-xs'></div>
-    <div class='col-sm-2 hidden-xs'><button style='margin-top:80px; font-size:26px;' id='mapage' onclick=\"window.location.href='../partials/mapage.php'\">Ma Page</button></div>
+    <div class='col-sm-2 hidden-xs'><button style='margin-top:80px; font-size:26px;' id='mapage' onclick=\"window.location.href='../partials/mapage_doc.php'\">Ma Page</button></div>
     <div class='col-sm-2 hidden-xs'></div>
     <div class='col-sm-3 hidden-xs'></div>
     </div>

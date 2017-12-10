@@ -58,6 +58,9 @@
       $("#login").click(function () {
         $("#Signin").css({'display':'none'});
         $("#Login").css({'display':'block'});
+        $("#Login_doc").css({'display':'none'});
+
+
         var hash = '#mastfoot';
         $('html, body').animate({
           scrollTop: $('#mastfoot').offset().top
@@ -69,9 +72,11 @@
 
   $(document).ready(
     function(){
-      $("#signin").click(function () {
+       $("#signin").click(function () {
        $("#Login").css({'display':'none'});
        $("#Signin").css({'display':'block'});
+       $("#Login_doc").css({'display':'none'});
+
        var hash = '#mastfoot';
        $('html, body').animate({
         scrollTop: $('#mastfoot').offset().top
@@ -81,6 +86,21 @@
      });
     });
 
+    $(document).ready(
+    function(){
+      $("#login_doc").click(function () {
+        $("#Signin").css({'display':'none'});
+        $("#Login").css({'display':'none'});
+        $("#Login_doc").css({'display':'block'});
+        var hash = '#mastfoot';
+        $('html, body').animate({
+          scrollTop: $('#mastfoot').offset().top
+        }, 1200, function(){
+          window.location.hash = '#mastfoot';
+        });
+      });
+    });
+
   </script>
 
 
@@ -88,13 +108,16 @@
   <?php 
     session_start();
     if (isset($_SESSION['account_name'])){
+
            echo"<div class='header'>
+     <div>
      <ul>
      <li class='sizeLogo'><img src='img/logo1.png'  alt='logo' id='logo'/></li>
      <li><a href='index.php'>Accueil</a></li>
      <li><a href='partials/mapage.php'>Ma Page</a></li>
-     <li><a>".$_SESSION["idUser"]."</a></li>
      <li style='float:right'><input type=\"button\" id=\"logout\" style='margin-top: -5px' value=\"Déconnexion\" OnClick=\"window.location.href='php/deconnexion.php'\"/>
+     <li style='float:right'><a> Bonjour ".$_SESSION["User"]."</a></li>
+     
 </li>
      </ul>
      </div>"  
@@ -104,7 +127,8 @@
      <ul>
      <li class='sizeLogo'><img src='img/logo1.png'  alt='logo' id='logo'/></li>
      <li><a href='index.php'>Accueil</a></li>
-     <li style='float:right'><button id='login' style='margin-top: -5px'>Connexion</button></li>
+     <li style='float:right'><button id='login' style='margin-top: -5px'>Connexion Patient</button></li>
+     <li style='float:right'><button id='login_doc' style='margin-top: -5px'>Connexion Docteur</button></li>
      <li style='float:right'><button id='signin' style='margin-top: -5px'>Inscription</button></li>
      </ul>
      </div>" 
@@ -126,7 +150,9 @@
 
   <!-- Appel du header -->
 
+  <!--
   <div ng-include src="'partials/head.html'"></div>
+  -->
 
   <!-- Fin header -->
 
@@ -197,10 +223,34 @@
 
   </div>
 
+   <div id="Login_doc" class="form" style="display:none;">
+
+      <form action="partials/Login_doc.php" method="POST" style="border: none !important;" >
+      </br> Se connecter :  </br>  
+      <table>
+
+        <tr>                        
+          <td><label for="login">Identifiant :  </label></td>
+          <td><input type="text" name="login" id="login"/></td>                        
+        </tr>
+
+        <tr>                  
+          <td><label for="pass">Mot de passe :  </label></td>
+          <td><input type="password" name="pass" id="pass"/></td>                        
+        </tr>
+
+      </table>
+
+      <input id="submit" type="submit" name="submit" value="Se connecter" style="color: black"/><br/><br/>
+
+    </form>
+
+  </div>
+
   <div id="Signin" class="form" style="display:none;">
 
       <form action="partials/SignIn.php" method="POST" style="border: none !important;" >
-      </br> Inscription :  </br>  
+      </br> Inscription d'un Patient :  </br>  
       <table>
 
         <tr>                        
@@ -214,6 +264,17 @@
         <tr>                        
           <td><label for="login"><strong>Identifiant :  </strong></label></td>
           <td><input type="text" name="login" id="login"/></td>     
+        </tr>
+        <tr>                        
+          <td><label for="login"><strong>Médecin :  </strong></label></td>
+          <td>
+            <select id='medecin' name='medecin' style="color:black; background-color:white; height: 34px;
+   width: 240px;">
+              <?php 
+                require "php/requetetab5_doc.php"
+              ?>
+            </select>
+          </td>     
         </tr>
         <tr>
           <td><label for="pass"><strong>Mot de passe :  </strong></label></td>

@@ -78,7 +78,7 @@
     <ul>
       <li class="sizeLogo"><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
       <li><a href="../index.php">Accueil</a></li>
-      <li><a href="mapage.php">Ma page</a></li>
+      <li><a href="mapage_doc.php">Ma page</a></li>
     </ul>
   </div>
  <!-- Fin header -->

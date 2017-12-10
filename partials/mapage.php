@@ -71,17 +71,20 @@
 
   </script>
 
+  <?php session_start() ?>
+
 
   <!-- Header -->
 
-    <div class="header">
-    <ul>
-      <li class="sizeLogo"><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
-      <li style='float:right'><input type=button id=logout style='margin-top: -5px' value=Déconnexion OnClick=window.location.href="../php/deconnexion.php">
-      <li><a href="../index.php">Accueil</a></li>
-      <li><a href="mapage.php">Ma page</a></li>
-    </ul>
-  </div>
+    <div class='header'>
+       <ul>
+       <li class='sizeLogo'><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
+       <li><a href='../index.php'>Accueil</a></li>
+       <li><a href='mapage.php'>Ma Page</a></li>
+       <li style='float:right'><input type="button" id="logout" style='margin-top: -5px' value="Déconnexion" OnClick="window.location.href='../php/deconnexion.php'"/></li>
+      <li style='float:right'><a> Bonjour <?php $_SESSION["User"]; ?> </a></li>
+      </ul>
+    </div>
  <!-- Fin header -->
 
 
@@ -153,9 +156,36 @@
         </tr>
       </thead>
       <tbody id="myTable">
+        <!--
         <?php
             require "../php/requetetab3.php"
         ?>
+      -->
+      <?php 
+    require "../php/dbConnect.php";
+  //$idUser='4';
+  $idUser1=$_SESSION["idUser"];
+
+  $request2 = "SELECT idData, date1, time1, air, temperature, posture, bpm, oxygen_saturation FROM medical_data WHERE idUser='$idUser1' AND date1!='0000-00-00' ORDER BY time1 DESC";  
+  $stmt2 = $conn->prepare($request2) ;
+  $stmt2->execute();
+  $stmt2->bind_result($idData,$date1, $time1, $air, $temperature, $posture, $bpm, $oxygen_saturation);  
+  $items = array();   
+  while ($stmt2->fetch()) {
+    echo "<tr>
+              <td> $idData </br>  </td>
+              <td> $date1 </td>
+              <td> $time1 </td>
+              <td> $air </td>
+              <td> $temperature</td>
+              <td> $posture</td>
+              <td> $bpm</td>
+              <td> $oxygen_saturation</td>
+              </tr>";
+
+};
+
+  ?>
       </tbody>
     </table> 
   </div>

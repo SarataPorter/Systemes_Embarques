@@ -128,7 +128,7 @@ if(isset($_POST["submit"])){
 
           if($_POST["login"] != $_POST["pass"]){
 
-           $sql = mysqli_query($conn, "INSERT INTO users (account_name,user_lastname,user_firstname,password) VALUES ('".$_POST["login"]."','".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["pass"]."')");
+           $sql = mysqli_query($conn, "INSERT INTO users (account_name,user_lastname,user_firstname,password,id_doctor) VALUES ('".$_POST["login"]."','".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["pass"]."','".$_POST["medecin"]."')");
            
            if($sql){
 
