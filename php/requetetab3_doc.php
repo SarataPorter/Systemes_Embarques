@@ -1,8 +1,12 @@
 	
 <?php 
+	session_start();
+
 	require "dbConnect.php";
 
-	$idUser=$_SESSION["idUser"];
+	//$idUser=$_SESSION["idUser"];
+	$idUser=$_REQUEST['idUser'];
+
 	//$idUser='4';
 	echo $idUser;
 

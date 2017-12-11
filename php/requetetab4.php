@@ -1,8 +1,12 @@
 	
 <?php 
+
+	session_start();
+
 	require "dbConnect.php";
 
-	$id_doctor='1';
+	$id_doctor=$_SESSION["id_doctor"];
+	//$id_doctor='1';
 
 	$request4 = "SELECT user_lastname, user_firstname, idUser FROM users WHERE id_doctor='$id_doctor' ORDER BY user_lastname DESC";  
 	$stmt4 = $conn->prepare($request4) ;

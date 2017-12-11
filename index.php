@@ -106,22 +106,40 @@
 
 
   <?php 
+    ini_set("display_errors",0);error_reporting(0);
     session_start();
     if (isset($_SESSION['account_name'])){
 
-           echo"<div class='header'>
-     <div>
-     <ul>
-     <li class='sizeLogo'><img src='img/logo1.png'  alt='logo' id='logo'/></li>
-     <li><a href='index.php'>Accueil</a></li>
-     <li><a href='partials/mapage.php'>Ma Page</a></li>
-     <li style='float:right'><input type=\"button\" id=\"logout\" style='margin-top: -5px' value=\"Déconnexion\" OnClick=\"window.location.href='php/deconnexion.php'\"/>
-     <li style='float:right'><a> Bonjour ".$_SESSION["User"]."</a></li>
-     
-</li>
-     </ul>
-     </div>"  
-   ;}
+      if($_SESSION['id_doctor']!="0"){
+        echo"<div class='header'>
+       <div>
+         <ul>
+           <li class='sizeLogo'><img src='img/logo1.png'  alt='logo' id='logo'/></li>
+           <li><a href='index.php'>Accueil</a></li>
+           <li><a href='partials/mapage.php'>Ma Page</a></li>
+           <li style='float:right'><input type=\"button\" id=\"logout\" style='margin-top: -5px' value=\"Déconnexion\" OnClick=\"window.location.href='php/deconnexion.php'\"/>
+            <li style='float:right'><a> Bonjour ".$_SESSION["User"]."</a></li>
+           </li>
+         </ul>
+       </div>";  
+     }
+     else{
+        $id_doctor="";
+        echo"<div class='header'>
+       <div>
+         <ul>
+           <li class='sizeLogo'><img src='img/logo1.png'  alt='logo' id='logo'/></li>
+           <li><a href='index.php'>Accueil</a></li>
+           <li><a href='partials/mapage_doc.php'>Ma Page</a></li>
+           <li style='float:right'><input type=\"button\" id=\"logout\" style='margin-top: -5px' value=\"Déconnexion\" OnClick=\"window.location.href='php/deconnexion.php'\"/>
+            <li style='float:right'><a> Bonjour ".$_SESSION["User"]."</a></li>
+           </li>
+         </ul>
+       </div>"; 
+
+     }
+
+   }
    else {
      echo"<div class='header'>
      <ul>

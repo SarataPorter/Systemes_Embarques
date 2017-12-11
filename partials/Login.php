@@ -114,10 +114,13 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
 
     if (mysqli_num_rows($result)) {
       $connectionOK = TRUE;
+      $error=FALSE;
       $connectionMSG = "Connexion réussie !";
       $_SESSION["account_name"] = $_POST["login"];
       $_SESSION["User"]=$user_lastname;
       $_SESSION["idUser"]=$idUser;
+      $_SESSION["id_doctor"]=$id_doctor;
+
 
     } 
     else
@@ -137,8 +140,8 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
   $error;
   if($error == TRUE){
     echo"<div id='monDiv' style='background-color:#719AAC; width:200px; height:300px; margin-top=-10px;>
-    <p style='color:white; font-size:46px; text-shadow: 0px 0px 9px #777;'><br><br>Oops...</p>
-    <p style='color:white; font-size:36px; text-shadow: 0px 0px 9px #777;'>".$errorMSG."</p>
+    <p style='color:white; font-size:46px; text-shadow: 0px 0px 9px #777;'><br><br></p>
+    <p style='color:white; font-size:36px; text-shadow: 0px 0px 9px #777;'>Oops...</br></br>".$errorMSG."</p>
     <div class='row text-center'>
     <div class='col-sm-3 hidden-xs'></div>
     <div class='col-sm-2 hidden-xs'></div>

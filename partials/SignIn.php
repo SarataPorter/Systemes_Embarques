@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="" lang="fr">
 
-
 <head>
 
   <meta charset="utf-8">
@@ -15,7 +14,7 @@
 
   <!-- Fichiers css -->
   <link rel="stylesheet" href="../vendor\bootstrap\css\bootstrap.css"/>
-  <link rel="stylesheet" href="../css\back.css">
+  <!--<link rel="stylesheet" href="../css\back.css"> -->
   <link rel="stylesheet" href="../css\style.css">
   <link rel="stylesheet" href="../css\head.css" >
   <link rel="stylesheet" href="../css\login.css">
@@ -50,34 +49,90 @@
       var largeur = document.documentElement.clientWidth,
       hauteur = document.documentElement.clientHeight;
 
-  var source = document.getElementById('monDiv'); // récupère l'id source
-  source.style.height = hauteur+'px'; // applique la hauteur de la page
-  source.style.width = largeur+'px'; // la largeur
-}
+      var source = document.getElementById('monDiv'); // récupère l'id source
+      source.style.height = hauteur+'px'; // applique la hauteur de la page
+      source.style.width = largeur+'px'; // la largeur
+    }
 
-// Une fonction de compatibilité pour gérer les évènements
-function addEvent(element, type, listener){
-  if(element.addEventListener){
-    element.addEventListener(type, listener, false);
-  }else if(element.attachEvent){
-    element.attachEvent("on"+type, listener);
-  }
-}
+    // Une fonction de compatibilité pour gérer les évènements
+    function addEvent(element, type, listener){
+      if(element.addEventListener){
+        element.addEventListener(type, listener, false);
+      }else if(element.attachEvent){
+        element.attachEvent("on"+type, listener);
+      }
+    }
 
-// On exécute la fonction une première fois au chargement de la page
-addEvent(window, "load", adpaterALaTailleDeLaFenetre);
-// Puis à chaque fois que la fenêtre est redimensionnée
-addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
+    // On exécute la fonction une première fois au chargement de la page
+    addEvent(window, "load", adpaterALaTailleDeLaFenetre);
+    // Puis à chaque fois que la fenêtre est redimensionnée
+    addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
 
-</script>
+  </script>
 
-<div class="header">
-  <ul>
-    <li class="sizeLogo"><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
-    <li><a href="../index.html">Accueil</a></li>
-    <li><a href="../partials/mapage.html">Ma page</a></li>
-  </ul>
-</div>
+  <script>
+    $(document).ready(
+      function(){
+        $("#login").click(function () {
+          $("#Signin").css({'display':'none'});
+          $("#Login").css({'display':'block'});
+          $("#Login_doc").css({'display':'none'});
+
+
+          var hash = '#mastfoot';
+          $('html, body').animate({
+            scrollTop: $('#mastfoot').offset().top
+          }, 1200, function(){
+            window.location.hash = '#mastfoot';
+          });
+        });
+      });
+
+    $(document).ready(
+      function(){
+         $("#signin").click(function () {
+         $("#Login").css({'display':'none'});
+         $("#Signin").css({'display':'block'});
+         $("#Login_doc").css({'display':'none'});
+
+         var hash = '#mastfoot';
+         $('html, body').animate({
+          scrollTop: $('#mastfoot').offset().top
+        }, 1200, function(){
+          window.location.hash = '#mastfoot';
+        });
+       });
+      });
+
+      $(document).ready(
+      function(){
+        $("#login_doc").click(function () {
+          $("#Signin").css({'display':'none'});
+          $("#Login").css({'display':'none'});
+          $("#Login_doc").css({'display':'block'});
+          var hash = '#mastfoot';
+          $('html, body').animate({
+            scrollTop: $('#mastfoot').offset().top
+          }, 1200, function(){
+            window.location.hash = '#mastfoot';
+          });
+        });
+      });
+
+  </script>
+
+  
+  <div class='header'>
+     <ul>
+     <li class='sizeLogo'><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
+     <li><a href='../index.php'>Accueil</a></li>
+     <!--
+     <li style='float:right'><button id='login' style='margin-top: -5px'>Connexion Patient</button></li>
+     <li style='float:right'><button id='login_doc' style='margin-top: -5px'>Connexion Docteur</button></li>
+     <li style='float:right'><button id='signin' style='margin-top: -5px'>Inscription</button></li>
+      -->
+     </ul>
+  </div>
 
 </head>
 
@@ -94,8 +149,7 @@ if(isset($_POST["submit"])){
 
   if($_POST["login"] == NULL OR $_POST["pass"] == NULL OR $_POST["pass2"] == NULL){
 
-    $error = TRUE;
-    
+    $error = TRUE;    
     $errorMSG = "Tous les champs doivent être remplis !";
     
   }
@@ -109,143 +163,155 @@ if(isset($_POST["submit"])){
       $newPassword2 = mysqli_real_escape_string($conn, $_POST['pass2']); 
 
       $result = $conn->query("SELECT * FROM users WHERE account_name ='$newUsername' AND password='$newPassword'");
-
       
       if(mysqli_num_rows($result)){
+
        $error = TRUE;
-
        $errorMSG = "Le nom de compte <strong>".$_POST["login"]."</strong> est déjà utilisé !";
+       $login = NULL;
 
-       $login = NULL;}
+      }
 
-
-       else{
-        $pass = $_POST["pass"];
+      else{
+      $pass = $_POST["pass"];
 
         if(strlen($_POST["pass"] < 60)){
 
-         if(strlen($_POST["login"] < 60)){
+            if(strlen($_POST["login"] < 60)){
 
-          if($_POST["login"] != $_POST["pass"]){
+              if($_POST["login"] != $_POST["pass"]){
 
-           $sql = mysqli_query($conn, "INSERT INTO users (account_name,user_lastname,user_firstname,password,id_doctor) VALUES ('".$_POST["login"]."','".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["pass"]."','".$_POST["medecin"]."')");
-           
-           if($sql){
+                $firstname1=$_POST["firstname"];
+                $lastname1=$_POST["lastname"];
+                $pass1=$_POST["pass"];
+                $login1=$_POST["login"];
+                $medecin=$_POST["medecin"];
 
-            $registerOK = TRUE;
-            $registerMSG = "Inscription réussie ! Vous êtes maintenant membre du site.";
-            
-            $_SESSION["account_name"] = $_POST["login"];
-            $_SESSION["password"] = $_POST["pass"];
-            $_SESSION["user_lastname"] = $_POST["lastname"];
-            $_SESSION["user_firstname"] = $_POST["firstname"];            
-          }
+                $username = "root";
+                $password = "";
+                $hostname = "localhost";
+                $mainDB = "test"; 
 
-          else{
+                // Connection to mysql Server
+                $conn = mysqli_connect($hostname, $username, $password, $mainDB)
+                or die("Unable to connect to MySQL");
 
-            $error = TRUE;
-            
-            $errorMSG = "Erreur dans la requête SQL<br/>".$sql."<br/>";
-            
-          }
-          
+                // Check connection
+                if (mysqli_connect_errno())
+                {
+                  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                }
+
+                $sql = mysqli_query($conn, "INSERT INTO users (account_name,user_lastname,user_firstname,password,id_doctor) VALUES ('$login1','$lastname1','$firstname1','$pass1','$medecin')");
+
+                if($sql){
+
+                  $registerOK = TRUE;
+                  $error=FALSE;
+                  $registerMSG = "Inscription réussie ! Vous êtes maintenant membre du site.";
+                  
+                  $_SESSION["account_name"] = $_POST["login"];
+                  $_SESSION["password"] = $_POST["pass"];
+                  $_SESSION["user_lastname"] = $_POST["lastname"];
+                  $_SESSION["user_firstname"] = $_POST["firstname"];    
+                }
+
+                else{
+
+                  $error = TRUE;              
+                  $errorMSG = "Erreur dans la requête SQL<br/>".$sql."<br/>";                
+                }          
+              }
+
+              else{
+
+               $error = TRUE;
+               $errorMSG = "Votre nom compte ne doit pas dépasser <strong>60 caractères</strong> !";         
+               $login = NULL;         
+               $pass = $_POST["pass"];
+               
+              }       
+            }     
         }
 
         else{
 
-         $error = TRUE;
-         
-         $errorMSG = "Votre nom compte ne doit pas dépasser <strong>60 caractères</strong> !";
-         
-         $login = NULL;
-         
-         $pass = $_POST["pass"];
-         
-       }
-       
-     }
-     
-   }
+           $error = TRUE;     
+           $errorMSG = "Votre mot de passe ne doit pas dépasser <strong>60 caractères</strong> !";     
+           $login = $_POST["login"];     
+           $pass = NULL;
+           
+        }
 
-   else{
+      }
 
-     $error = TRUE;
-     
-     $errorMSG = "Votre mot de passe ne doit pas dépasser <strong>60 caractères</strong> !";
-     
-     $login = $_POST["login"];
-     
-     $pass = NULL;
-     
-   }
+    }
+
+    else{
+
+      $error = TRUE;  
+      $errorMSG = "Le nom de compte et le mot de passe doivent êtres différents !";
+      
+    }
+
+  }
+
+  elseif($_POST["pass"] != $_POST["pass2"]){
+
+   $error = TRUE;
    
- }
+   $errorMSG = "Les deux mots de passes sont différents !";
+   
+   $login = $_POST["login"];
+   
+   $pass = NULL;
+   
+  }
+
+  elseif($_POST["login"] == $_POST["pass"]){
+
+   $error = TRUE;
+   
+   $errorMSG = "Le nom de compte et le mot de passe doivent être différents !";
+   
+  }
+
+
+
+
 
 }
 
-else{
-
-  $error = TRUE;
-  
-  $errorMSG = "Le nom de compte et le mot de passe doivent êtres différents !";
-  
-}
-
-}
-
-elseif($_POST["pass"] != $_POST["pass2"]){
-
- $error = TRUE;
- 
- $errorMSG = "Les deux mots de passes sont différents !";
- 
- $login = $_POST["login"];
- 
- $pass = NULL;
- 
-}
-
-elseif($_POST["login"] == $_POST["pass"]){
-
- $error = TRUE;
- 
- $errorMSG = "Le nom de compte et le mot de passe doivent être différents !";
- 
-}
-}
-?>
-
-<?php
 
 $BDD=null;
 
-?>
-
-<?php
 if($error == TRUE){ 
-    echo"<div id='monDiv' style='background-color:#719AAC; width:200px; height:300px;'>
-    <p style='color:white; font-size:46px; text-shadow: 0px 0px 9px #777;'><br><br>Oops...</p>
-    <p style='color:white; font-size:36px; text-shadow: 0px 0px 9px #777;'>".$errorMSG."</p>
-    <div class='row text-center'>
-    <div class='col-sm-3 hidden-xs'></div>
-    <div class='col-sm-2 hidden-xs'></div>
-    <div class='col-sm-2 hidden-xs'><button style='margin-top:80px; font-size:26px;' id='back' onclick='history.go(-1)'>Retour</button></div>
-    <div class='col-sm-2 hidden-xs'></div>
-    <div class='col-sm-3 hidden-xs'></div>
-    </div>
-    </div>";
-  ?>
-  <?php
-    echo"<div id='monDiv' style='background-color:#719AAC; width:200px; height:300px;'>
-    <p style='color:white; font-size:46px; text-shadow: 0px 0px 9px #777;'><br><br>".$registerMSG."</p>
-    <div class='row text-center'>
-    <div class='col-sm-3 hidden-xs'></div>
-    <div class='col-sm-2 hidden-xs'></div>
-    <div class='col-sm-2 hidden-xs'><button style='margin-top:80px; font-size:26px;' id='mapage'>Ma Page</button></div>
-    <div class='col-sm-2 hidden-xs'></div>
-    <div class='col-sm-3 hidden-xs'></div>
-    </div>
-    </div>";
-  }
-  ?>
+  echo"<div id='monDiv' style='background-color:#719AAC; width:200px; height:300px;'>
+  <p style='color:white; font-size:46px; text-shadow: 0px 0px 9px #777;'><br><br>Oops...</p>
+  <p style='color:white; font-size:36px; text-shadow: 0px 0px 9px #777;'>".$errorMSG."</p>
+  <div class='row text-center'>
+  <div class='col-sm-3 hidden-xs'></div>
+  <div class='col-sm-2 hidden-xs'></div>
+  <div class='col-sm-2 hidden-xs'><button style='margin-top:80px; font-size:26px;' id='back' onclick='history.go(-1)'>Retour</button></div>
+  <div class='col-sm-2 hidden-xs'></div>
+  <div class='col-sm-3 hidden-xs'></div>
+  </div>
+  </div>";
+ }
+
+else{
+
+  echo"<div id='monDiv' style='background-color:#719AAC; width:200px; height:300px;'>
+  <p style='color:white; font-size:46px; text-shadow: 0px 0px 9px #777;'><br><br>".$registerMSG."</p>
+  <div class='row text-center'>
+  <div class='col-sm-3 hidden-xs'></div>
+  <div class='col-sm-2 hidden-xs'></div>
+  <div class='col-sm-2 hidden-xs'><button style='margin-top:80px; font-size:26px;' id='back' onclick='history.go(-1)'> Accueil </button></div>
+  <div class='col-sm-2 hidden-xs'></div>
+  <div class='col-sm-3 hidden-xs'></div>
+  </div>
+  </div>";
+}
+
+?>
 

@@ -1,3 +1,7 @@
+  <?php 
+  session_start(); 
+  ?>
+
 <!DOCTYPE html>
 <html ng-app="" lang="fr">
 
@@ -71,21 +75,23 @@
 
   </script>
 
-  <?php session_start() ?>
 
 
-  <!-- Header -->
+<?php
+      echo"<div class='header'>
+       <div>
+         <ul>
+           <li class='sizeLogo'><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
+           <li><a href='../index.php'>Accueil</a></li>
+           <li><a href='mapage.php'>Ma Page</a></li>
+           <li style='float:right'><input type=\"button\" id=\"logout\" style='margin-top: -5px' value=\"Déconnexion\" OnClick=\"window.location.href='../php/deconnexion.php'\"/>
+            <li style='float:right'><a> Bonjour ".$_SESSION["User"]."</a></li>
+           </li>
+         </ul>
+       </div>
+      </div>"; 
 
-    <div class='header'>
-       <ul>
-       <li class='sizeLogo'><img src='../img/logo1.png'  alt='logo' id='logo'/></li>
-       <li><a href='../index.php'>Accueil</a></li>
-       <li><a href='mapage.php'>Ma Page</a></li>
-       <li style='float:right'><input type="button" id="logout" style='margin-top: -5px' value="Déconnexion" OnClick="window.location.href='../php/deconnexion.php'"/></li>
-      <li style='float:right'><a> Bonjour <?php $_SESSION["User"]; ?> </a></li>
-      </ul>
-    </div>
- <!-- Fin header -->
+  ?>
 
 
 <body>
