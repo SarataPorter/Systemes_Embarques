@@ -119,8 +119,7 @@ session_start();
 
       
     <h1> Tableau de Bord : </h1>
-
-    
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">    
     <form method='post' action="../php/requetetab3_doc.php" style="margin:0px">
       Selectionnez un client : 
       <select id='menu' name='id'>
@@ -133,6 +132,7 @@ session_start();
         <button id="submit" type="button" class="">Go</button>
       </div>
     </form>
+  </form>
 
     <div class="w3-row">
 
@@ -178,7 +178,31 @@ session_start();
             </tr>
           </thead>
           <tbody id="myTable">
-            <script src="../js/tab0_doc.js"></script>
+
+            <?php 
+              require "../php/dbConnect.php";
+
+              //$idUser=$_REQUEST["idUser"];
+              $idUser="4";
+              $request2 = "SELECT idData, date1, time1, air, temperature, posture, bpm, oxygen_saturation FROM medical_data WHERE idUser='$idUser' AND date1!='0000-00-00' ORDER BY time1 DESC";  
+              $stmt2 = $conn->prepare($request2) ;
+              $stmt2->execute();
+              $stmt2->bind_result($idData,$date1, $time1, $air, $temperature, $posture, $bpm, $oxygen_saturation);  
+              $items = array();   
+                while ($stmt2->fetch()) {
+                  echo "<tr>
+                          <td> $idData </br>  </td>
+                          <td> $date1 </td>
+                          <td> $time1 </td>
+                          <td> $air </td>
+                          <td> $temperature</td>
+                          <td> $posture</td>
+                          <td> $bpm</td>
+                          <td> $oxygen_saturation</td>
+                       </tr>";
+              };
+            ?>
+
           </tbody>
         </table> 
       </div>

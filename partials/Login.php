@@ -119,7 +119,7 @@ addEvent(window, "resize", adpaterALaTailleDeLaFenetre);
       $_SESSION["account_name"] = $_POST["login"];
       $_SESSION["User"]=$user_lastname;
       $_SESSION["idUser"]=$idUser;
-      $_SESSION["id_doctor"]=$id_doctor;
+      $_SESSION["user_firstname"]=$user_firstname;
 
 
     } 

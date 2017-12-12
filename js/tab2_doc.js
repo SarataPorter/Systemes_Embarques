@@ -3,6 +3,7 @@
 
       $("#submit").click(function(event){
       var idUser = $('#menu').val();
+
       console.log(idUser);
 
        $.getJSON("../js/Json2_doc.php?idUser=" + idUser, function(jsonResponse){

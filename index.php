@@ -110,7 +110,7 @@
     session_start();
     if (isset($_SESSION['account_name'])){
 
-      if($_SESSION['id_doctor']!="0"){
+      if($_SESSION['user_firstname']!=""){
         echo"<div class='header'>
        <div>
          <ul>
